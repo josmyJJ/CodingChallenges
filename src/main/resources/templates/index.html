@@ -5,25 +5,16 @@
 <body>
 <nav th:replace="base :: navbar"></nav>
 <div class="container">
-    <h2>Insecure Page</h2>
-    <div sec:authorize="isAuthenticated()">
-        This content is only shown to authenticated users.<br/>
-
-        <div sec:authorize="hasAuthority('ADMIN')">
-            This content is only shown to administrators.
+    <h2>Coding Challenges</h2>
+    <!--<div sec:authorize="isAuthenticated()">-->
+        <!--<span sec:authentication="principal.authorities">[USER, ADMIN]-->
+        <!--</span><br/><br/>-->
+    <!--</div>-->
+    <section>
+        <div th:each="challenge : ${challenges}">
+            <a th:href="@{${challenge.challengeLink}}" th:text="${challenge.challangeTopc}" target="_blank"></a>
         </div>
-        <div sec:authorize="hasAuthority('USER')">
-            This content is only shown to users.
-        </div>
-        Logged user: <span sec:authentication="name">The value of the "name"
-        property of the authentication object should appear here.</span><br/>
-        Roles:
-        <span sec:authentication="principal.authorities">[USER, ADMIN]
-        </span><br/><br/>
-    </div>
-    <div sec:authorize="isAnonymous()">
-        This content is only shown to anonymous users.
-    </div>
+    </section>
 
 </div>
 <nav th:replace="base :: footer"></nav>

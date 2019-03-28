@@ -19,6 +19,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
   @Autowired
   SSUserDetailsService ssUserDetailsService;
 
@@ -36,14 +41,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   {
     http
             .authorizeRequests()
-            .antMatchers("/", "/h2-console/**", "/register", "/css/**", "/js/**")
+            .antMatchers("/", "/h2-console/**", "/register", "/css/**", "/js/**", "/addchallenge")
             .permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin().loginPage("/login").permitAll()
             .and()
             .logout()
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutRequestMatcher(
+                    new AntPathRequestMatcher("/logout"))
             .logoutSuccessUrl("/").permitAll().permitAll()
             .and()
             .httpBasic();
@@ -53,10 +59,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .headers().frameOptions().disable();
   }
 
-  @Bean
-  public static BCryptPasswordEncoder passwordEncoder(){
-    return new BCryptPasswordEncoder();
-  }
+//  @Bean
+//  public static BCryptPasswordEncoder passwordEncoder(){
+//    return new BCryptPasswordEncoder();
+//  }
 
 //  @Override
 //  protected void configure(AuthenticationManagerBuilder auth) throws Exception
@@ -68,10 +74,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //            ("ADMIN");
 //  }
 
-  @Bean
-  public PasswordEncoder encoder() {
-    return new BCryptPasswordEncoder();
-  }
 
 
   @Override

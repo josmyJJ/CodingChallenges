@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="base :: headstuff"></head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+<div class="container">
+    <h2>Add a challenge</h2>
+
+    <section>
+        <form th:action="@{/processchallenge}" th:object="${challenge}" method="post">
+            <input type="hidden" th:field="*{id}">
+            Topic: <input type="text" th:field="*{challangeTopc}">
+            ChallengeLink: <input type="text" th:field="*{challengeLink}">
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+</div>
+<nav th:replace="base :: footer"></nav>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

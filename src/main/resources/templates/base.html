@@ -5,16 +5,13 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Spring Security</title>
+    <title>Coding Challenges</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 
     <style>
-        body {
-            padding-bottom: 70px;
-        }
         .container{
             padding-top: 50px;
         }
@@ -25,15 +22,15 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
-    <a class="navbar-brand" href="#">Security</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
+    <a class="navbar-brand" href="#">CH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarNav" aria-controls="navbarNav"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">
                         (current)</span></a>
@@ -55,11 +52,9 @@
 <h1>Hello, world!</h1>
 
 <nav class="navbar navbar-dark bg-dark fixed-bottom" th:fragment="footer">
-    <div class="container">
             <a class="nav-item nav-link" href="/">Home </a>
             <a class="nav-item nav-link" href="/secure">Secure </a>
             <a class="nav-item nav-link" href="#">Copyright 2019 - Josemy Joseph</a>
-    </div>
 </nav>
 
 <th:block th:fragment="jslinks">
